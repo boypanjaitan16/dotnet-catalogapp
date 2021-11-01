@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:4.1.8-xenial
+    container_name: catalog-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: mongo
+      MONGO_INITDB_DATABASE: catalog
+
+  redis:
+    image: redis:6.2.6-alpine
+    container_name: catalog-redis
+    ports:
+      - "6379:6379"
